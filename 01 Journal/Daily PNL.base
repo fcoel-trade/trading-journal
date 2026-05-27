@@ -1,0 +1,65 @@
+formulas:
+  isChallenge: note["trade-account"].lower().contains("challenge")
+views:
+  - type: table
+    name: PNL by Account And Date
+    filters:
+      and:
+        - type == "trading-account-scalp-daily-pnl"
+        - file.inFolder(this.file.folder) && file.path != this.file.path
+    groupBy:
+      property: date
+      direction: ASC
+    order:
+      - date
+      - trade-account
+      - PNL
+      - formula.isChallenge
+      - file.name
+      - trade-account-daily-dd
+      - trade-account-blown
+    sort:
+      - property: trade-account
+        direction: ASC
+      - property: PNL
+        direction: DESC
+      - property: date
+        direction: ASC
+      - property: trading-account
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    summaries:
+      PNL: Sum
+    columnSize: {}
+  - type: table
+    name: Today PNL by Account
+    filters:
+      and:
+        - type == "trading-account-scalp-daily-pnl"
+        - date(date).format("YYYY-MM-DD")  == this.file.properties["date-created"].format("YYYY-MM-DD")
+    groupBy:
+      property: date
+      direction: ASC
+    order:
+      - date
+      - trade-account
+      - PNL
+      - formula.isChallenge
+      - file.name
+      - trade-account-daily-dd
+      - trade-account-blown
+    sort:
+      - property: trade-account
+        direction: ASC
+      - property: PNL
+        direction: DESC
+      - property: date
+        direction: ASC
+      - property: trading-account
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    summaries:
+      PNL: Sum
+    columnSize: {}

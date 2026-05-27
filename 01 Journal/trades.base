@@ -1,0 +1,117 @@
+formulas:
+  isTradeDateIsToday: |-
+    note["trade-date-created"].format("YYYY-MM-DD") == today() ||
+    note["trade-date-close"].format("YYYY-MM-DD") == today() || note["trade-date-filled"].format("YYYY-MM-DD") == today()
+  isTradeDateIsFileDateCreated: |-
+    note["trade-date-created"].format("YYYY-MM-DD") ==
+     this.file.properties["date-created"]
+properties:
+  note.trade-date-created:
+    displayName: date-created
+  note.trade-status:
+    displayName: status
+  note.trade-setup:
+    displayName: setup
+  note.trade-risk-reward-planned:
+    displayName: RR planned
+  note.trade-risk-reward-at-close:
+    displayName: RR  close
+  note.trade-risk-reward-max-before-sl:
+    displayName: RR max before sl
+  note.trade-amount:
+    displayName: amount
+  note.trade-account:
+    displayName: account
+  note.trade-asset:
+    displayName: asset
+views:
+  - type: table
+    name: Trades in Path
+    filters:
+      and:
+        - type == "trade"
+        - file.inFolder(this.file.folder)
+    order:
+      - file.name
+      - trade-date-created
+      - trade-status
+      - trade-asset
+      - trade-session
+      - trade-setup
+      - trade-risk-reward-planned
+      - trade-risk-reward-at-close
+      - trade-risk-reward-max-before-sl
+      - trade-amount
+      - trade-account
+    sort:
+      - property: trade-date-created
+        direction: ASC
+      - property: trade-status
+        direction: DESC
+      - property: file.name
+        direction: ASC
+      - property: trade-setup
+        direction: DESC
+      - property: amount
+        direction: ASC
+    summaries:
+      trade-risk-reward-planned: Sum
+      trade-risk-reward-at-close: Sum
+      trade-amount: Sum
+    columnSize:
+      file.name: 264
+      note.trade-date-created: 254
+      note.trade-asset: 123
+      note.trade-setup: 181
+      note.trade-risk-reward-planned: 116
+      note.trade-risk-reward-at-close: 104
+      note.trade-amount: 109
+  - type: table
+    name: Trades of the Day
+    filters:
+      and:
+        - type == "trade"
+        - file.inFolder(this.file.folder)
+        - formula.isTradeDateIsFileDateCreated == true
+    order:
+      - file.name
+      - trade-date-created
+      - trade-asset
+      - trade-status
+      - trade-setup
+      - trade-risk-reward-planned
+      - trade-risk-reward-at-close
+      - trade-risk-reward-max-before-sl
+      - trade-amount
+      - trade-account
+    sort:
+      - property: amount
+        direction: ASC
+    columnSize:
+      file.name: 198
+      note.trade-date-created: 277
+      note.trade-asset: 102
+      note.trade-setup: 188
+      note.trade-risk-reward-planned: 127
+      note.trade-risk-reward-at-close: 106
+      note.trade-amount: 148
+  - type: table
+    name: Today Trades
+    filters:
+      and:
+        - type == "trade"
+        - file.inFolder(this.file.folder)
+        - formula.isTradeDateIsToday == true
+    order:
+      - file.name
+      - trade-date-created
+      - trade-status
+      - trade-setup
+      - trade-risk-reward-planned
+      - trade-risk-reward-at-close
+      - trade-risk-reward-max-before-sl
+      - trade-amount
+      - trade-account
+    sort:
+      - property: amount
+        direction: ASC
