@@ -63,3 +63,5 @@ views:
     summaries:
       PNL: Sum
     columnSize: {}
+  - type: table
+    name: View
