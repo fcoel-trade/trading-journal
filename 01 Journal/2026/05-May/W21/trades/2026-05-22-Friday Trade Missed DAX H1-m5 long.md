@@ -3,7 +3,7 @@ type: trade
 trade-status: not-filled
 trade-asset: "[[DAX]]"
 trade-session: "[[New York AM|NYAM]]"
-trade-setup: "[[Inversion de tendance]]"
+trade-setup: "[[Inversion de tendance H1]]"
 trade-position: short
 trade-entry:
 trade-pda-support:

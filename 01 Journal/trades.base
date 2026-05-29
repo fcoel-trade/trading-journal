@@ -44,11 +44,9 @@ views:
       - trade-amount
       - trade-account
     sort:
-      - property: trade-date-created
+      - property: file.name
         direction: ASC
       - property: trade-status
-        direction: DESC
-      - property: file.name
         direction: ASC
       - property: trade-setup
         direction: DESC
@@ -59,7 +57,7 @@ views:
       trade-risk-reward-at-close: Sum
       trade-amount: Sum
     columnSize:
-      file.name: 264
+      file.name: 452
       note.trade-date-created: 254
       note.trade-asset: 123
       note.trade-setup: 181

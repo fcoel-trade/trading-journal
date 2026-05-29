@@ -3,13 +3,13 @@ type: trade
 trade-status: BE
 trade-asset: "[[DAX]]"
 trade-session: "[[New York AM]]"
-trade-setup: "[[Inversion de tendance]]"
+trade-setup: "[[Inversion de tendance H1]]"
 trade-position: short
 trade-entry:
   - OB m30
 trade-pda-support: FVG H4
 trade-risk-reward-planned: 2.91
-trade-risk-reward-at-close:
+trade-risk-reward-at-close: 0.02
 trade-risk-reward-max-before-sl:
 trade-risk-bid:
 trade-lot-size:

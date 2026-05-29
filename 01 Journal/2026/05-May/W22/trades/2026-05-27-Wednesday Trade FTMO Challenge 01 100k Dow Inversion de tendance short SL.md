@@ -3,7 +3,7 @@ type: trade
 trade-status: stop-loss-managed
 trade-asset: "[[Dow]]"
 trade-session: "[[New York Lunch]]"
-trade-setup: "[[Inversion de tendance]]"
+trade-setup: "[[Inversion de tendance H1]]"
 trade-position: short
 trade-entry:
   - BB m5
