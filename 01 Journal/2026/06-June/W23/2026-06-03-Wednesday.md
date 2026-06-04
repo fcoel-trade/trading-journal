@@ -97,3 +97,5 @@ trop peur de me faire sweep à l'open. Il faut que je me retire ce biais.
 - [ ] PDarray ?
 
 ![]()
+Rien pris en réel alors que j'avais 3 trades en paper qui ont tp avec des RR > 2 et de très bonne entrée. 
+Trust the process.
